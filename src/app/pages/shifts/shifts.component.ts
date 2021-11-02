@@ -7,7 +7,10 @@ export interface ShiftsI {
   id: number | null
   name: string
   code: string
-  shiftDetails: any[]
+  startTime: string
+  endTime: string
+  totalHrs: string
+  totalBreakHrs: string
   active: boolean
 }
 
@@ -23,10 +26,13 @@ export class ShiftsComponent implements OnInit {
 
   displayedColumns: string[] = [
     '#',
-    'Sift Name',
-    'Start Code',
-    'Shift Days',
-    'Actions'
+    'Code',
+    'Shift Name',
+    'Start Time',
+    'End Time',
+    'Total Hours',
+    'Total Break Hours',
+    'Action'
   ];
   dataSource: ShiftsI[] = [];
 
@@ -41,7 +47,6 @@ export class ShiftsComponent implements OnInit {
   getShifts = async () => {
     const response = await get("shifts")
     if (response.success) this.dataSource = response.data
-    console.log(this.dataSource)
   }
 
   ngOnInit(): void {

@@ -1,7 +1,6 @@
 import {
-  AllowNull, AutoIncrement, Column, HasMany, Model, NotEmpty, PrimaryKey, Table
+  AllowNull, AutoIncrement, Column, Model, NotEmpty, PrimaryKey, Table
 } from "sequelize-typescript"
-import ShiftDetails from './shiftDetails'
 
 
 export interface ShiftMasterI {
@@ -9,6 +8,12 @@ export interface ShiftMasterI {
   code: string
   name: string
   description: string
+  startTime: string
+  endTime: string
+  breakStartTime: string
+  breakEndTime: string
+  totalHrs: string
+  totalBreakHrs: string
   active: boolean
 }
 
@@ -36,11 +41,33 @@ export default class ShiftMaster extends Model implements ShiftMasterI {
   @Column
   description!: string
 
+  @AllowNull(false)
+  @NotEmpty
+  @Column
+  startTime!: string
+
+  @AllowNull(false)
+  @Column
+  endTime!: string
+
+  @AllowNull(false)
+  @Column
+  breakStartTime!: string
+
+  @AllowNull(false)
+  @Column
+  breakEndTime!: string
+
+  @AllowNull(false)
+  @Column
+  totalHrs!: string
+
+  @AllowNull(false)
+  @Column
+  totalBreakHrs!: string
+
   @AllowNull(true)
   @NotEmpty
   @Column
   active!: boolean
-
-  @HasMany(() => ShiftDetails)
-  shiftDetails: ShiftDetails[]
 }

@@ -9,7 +9,8 @@ export interface ShiftAssignmentI {
   id: number | null
   shiftMasterId: number
   employeeId: number
-  date: Date
+  startDate: Date
+  endDate: Date
 }
 
 @Table({
@@ -37,7 +38,12 @@ export default class ShiftAssignment extends Model implements ShiftAssignmentI {
   @AllowNull(false)
   @NotEmpty
   @Column
-  date!: Date
+  startDate!: Date
+
+  @AllowNull(false)
+  @NotEmpty
+  @Column
+  endDate!: Date
 
   @BelongsTo(() => ShiftMaster)
   shiftDetails: ShiftMaster

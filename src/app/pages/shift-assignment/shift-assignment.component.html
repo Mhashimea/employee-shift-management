@@ -27,11 +27,14 @@
       <tr *ngFor="let data of dataSource; let i = index">
         <td>{{ i + 1 }}</td>
         <td class="flex items-center">
-          <div class="avatar">{{ data.userDetails.fullName(0, 1) }}</div>
-          <span>{{ data.userDetails.fullName }}</span>
+          <div class="avatar">
+            {{ convertToLodash(data, "userDetails.fullName").slice(0, 1) }}
+          </div>
+          <span>{{ convertToLodash(data, "userDetails.fullName") }}</span>
         </td>
-        <td>{{ data.shiftDetails.name }}</td>
-        <td>{{ data.date | dateFormat: "DD-MMM-YYYY" }}</td>
+        <td>{{ convertToLodash(data, "shiftDetails.name") }}</td>
+        <td>{{ data.startDate | dateFormat: "DD-MMM-YYYY" }}</td>
+        <td>{{ data.endDate | dateFormat: "DD-MMM-YYYY" }}</td>
         <td class="table-action">
           <div class="flex items-center">
             <a (click)="onEditEmployee(data)"><i class="far fa-edit"></i></a>
@@ -41,4 +44,12 @@
       </tr>
     </tbody>
   </table>
+  <div class="table-no-data" *ngIf="dataSource.length === 0">
+    <img src="../../../assets/no-data.png" alt="" />
+    <h1>No Data Found</h1>
+    <p class="desc">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam doloribus
+      nobis voluptas repellendus,
+    </p>
+  </div>
 </div>

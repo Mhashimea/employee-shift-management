@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { post } from 'src/app/services/http-request';
 
 export interface ShiftEditorI {
   name: string
@@ -15,23 +17,20 @@ export interface ShiftEditorI {
 })
 export class ShiftEditorComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private router: Router) { }
 
   formGroup: FormGroup;
-  data: any = {
+  public data: any = {
     name: '',
     code: '',
     description: '',
     active: true,
-    shiftDetails: [
-      { dayName: 'Sunday', startTime: '' },
-      { dayName: 'Monday', startTime: '' },
-      { dayName: 'Tuesday', startTime: '' },
-      { dayName: 'Wednsday', startTime: '' },
-      { dayName: 'Thursday', startTime: '' },
-      { dayName: 'Friday', startTime: '' },
-      { dayName: 'Saturday', startTime: '' },
-    ]
+    totalHrs: '',
+    startTime: '',
+    endTime: '',
+    totalBreakHrs: '',
+    breakStartTime: '',
+    breakEndTime: ''
   }
 
   createForm() {
@@ -40,12 +39,19 @@ export class ShiftEditorComponent implements OnInit {
       'code': [this.data.code, [Validators.required]],
       'name': [this.data.name, Validators.required],
       'description': [this.data.description],
-      'shiftDetails': [this.data.shiftDetails],
+      'totalHrs': [this.data.totalHrs, Validators.required],
+      'totalBreakHrs': [this.data.totalHrs, Validators.required],
+      'startTime': [this.data.totalHrs, Validators.required],
+      'endTime': [this.data.totalHrs, Validators.required],
+      'breakStartTime': [this.data.totalHrs, Validators.required],
+      'breakEndTime': [this.data.totalHrs, Validators.required],
     });
   }
 
   onSubmit = async (values: any) => {
     console.log(values)
+    const response = await post("add-shift", { payload: values })
+    if (response.success) this.router.navigate(['/shifts', {}])
   }
 
   get name() {

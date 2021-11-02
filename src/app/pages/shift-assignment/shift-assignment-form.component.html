@@ -1,0 +1,82 @@
+<div class="employee-form">
+  <h1 mat-dialog-title>Assign Shift</h1>
+  <div mat-dialog-content>
+    <p class="desc">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero inventore
+      possimus culpa quidem expedita ur enim, odio eos repudiandae voluptates
+      saepe quisquam.
+    </p>
+    <form
+      [formGroup]="formGroup"
+      (ngSubmit)="onSubmit(formGroup.value)"
+      class="app-form"
+    >
+      <div class="app-form-control">
+        <mat-form-field appearance="outline">
+          <mat-label>Start Date</mat-label>
+          <input
+            matInput
+            [matDatepickerFilter]="myFilter"
+            [matDatepicker]="picker"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error
+            *ngIf="
+              !formGroup.controls['startDate'].valid &&
+              formGroup.controls['startDate'].touched
+            "
+          >
+            Date is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="app-form-control">
+        <mat-form-field appearance="outline">
+          <mat-label>Select Employee</mat-label>
+          <mat-select formControlName="employeeId" multiple>
+            <mat-option *ngFor="let emp of employees" [value]="emp.id">
+              {{ emp.fullName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="app-form-control">
+        <mat-form-field appearance="outline">
+          <mat-label>Select Shift</mat-label>
+          <mat-select formControlName="shiftMasterId">
+            <mat-option *ngFor="let shift of shifts" [value]="shift.id">
+              {{ shift.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-footer">
+        <button
+          mat-raised-button
+          color="warn"
+          mat-button
+          [mat-dialog-close]="'cancel'"
+          class="button"
+        >
+          Cancel
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="button"
+          [disabled]="!formGroup.valid || loading"
+        >
+          Submit Form
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

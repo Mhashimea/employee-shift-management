@@ -47,6 +47,106 @@
         </mat-form-field>
       </div>
     </div>
+    <div class="flex items-center">
+      <div class="app-form-control">
+        <mat-form-field appearance="outline">
+          <mat-label>Shift Start Time</mat-label>
+          <input matInput placeholder="08:00 AM" formControlName="startTime" />
+          <mat-error
+            *ngIf="
+              !formGroup.controls['startTime'].valid &&
+              formGroup.controls['startTime'].touched
+            "
+          >
+            Start time is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="app-form-control" style="margin-left: 10px">
+        <mat-form-field appearance="outline">
+          <mat-label>Shift End Time</mat-label>
+          <input matInput placeholder="04:00 PM" formControlName="endTime" />
+          <mat-error
+            *ngIf="
+              !formGroup.controls['endTime'].valid &&
+              formGroup.controls['endTime'].touched
+            "
+          >
+            End time is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="app-form-control" style="margin-left: 10px">
+        <mat-form-field appearance="outline">
+          <mat-label>Total Hours</mat-label>
+          <input matInput placeholder="08:00 HRS" formControlName="totalHrs" />
+          <mat-error
+            *ngIf="
+              !formGroup.controls['totalHrs'].valid &&
+              formGroup.controls['totalHrs'].touched
+            "
+          >
+            Total Hours is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="flex items-center">
+      <div class="app-form-control">
+        <mat-form-field appearance="outline">
+          <mat-label>Break Start Time</mat-label>
+          <input
+            matInput
+            placeholder="08:00 AM"
+            formControlName="breakStartTime"
+          />
+          <mat-error
+            *ngIf="
+              !formGroup.controls['breakStartTime'].valid &&
+              formGroup.controls['breakStartTime'].touched
+            "
+          >
+            Break Start time is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="app-form-control" style="margin-left: 10px">
+        <mat-form-field appearance="outline">
+          <mat-label>Break End Time</mat-label>
+          <input
+            matInput
+            placeholder="04:00 PM"
+            formControlName="breakEndTime"
+          />
+          <mat-error
+            *ngIf="
+              !formGroup.controls['breakEndTime'].valid &&
+              formGroup.controls['breakEndTime'].touched
+            "
+          >
+            Break End Time is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="app-form-control" style="margin-left: 10px">
+        <mat-form-field appearance="outline">
+          <mat-label>Total Break Hours</mat-label>
+          <input
+            matInput
+            placeholder="08:00 HRS"
+            formControlName="totalBreakHrs"
+          />
+          <mat-error
+            *ngIf="
+              !formGroup.controls['totalBreakHrs'].valid &&
+              formGroup.controls['totalBreakHrs'].touched
+            "
+          >
+            Break Total Hours is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
     <div class="app-form-control">
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
@@ -56,29 +156,6 @@
           formControlName="description"
         ></textarea>
       </mat-form-field>
-    </div>
-    <div class="shift-editor-details">
-      <h1>Shift Details</h1>
-      <p class="desc">
-        Lorem ipsum, dolor sit ai exercitationem. Dignissimos est incidunt ipsum
-        ut perspiciatis dolore?
-      </p>
-      <div class="shift-editor-days">
-        <div
-          class="shift-editor-days-day"
-          *ngFor="let day of data.shiftDetails; let i = index"
-        >
-          <h2>{{ day.dayName }}</h2>
-          <mat-form-field>
-            <mat-label>StartTime</mat-label>
-            <input
-              formControlName="startTime"
-              placeholder="Start time"
-              matInput
-            />
-          </mat-form-field>
-        </div>
-      </div>
     </div>
     <div class="form-footer">
       <button mat-raised-button color="warn" mat-button class="button">

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CalendarComponent } from './pages/calendar/calendar.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { HolidaysComponent } from './pages/holidays/holidays.component';
 import { ShiftAssignmentComponent } from './pages/shift-assignment/shift-assignment.component';
@@ -13,6 +14,8 @@ const routes: Routes = [
   { path: 'shifts/create', component: ShiftEditorComponent },
   { path: 'shifts/:id', component: ShiftEditorComponent },
   { path: 'shift-assignment', component: ShiftAssignmentComponent },
+  { path: 'calendar', component: CalendarComponent },
+
 ];
 
 @NgModule({

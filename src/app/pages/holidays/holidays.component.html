@@ -43,4 +43,12 @@
       </tr>
     </tbody>
   </table>
+  <div class="table-no-data" *ngIf="dataSource.length === 0">
+    <img src="../../../assets/no-data.png" alt="" />
+    <h1>No Data Found</h1>
+    <p class="desc">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam doloribus
+      nobis voluptas repellendus,
+    </p>
+  </div>
 </div>

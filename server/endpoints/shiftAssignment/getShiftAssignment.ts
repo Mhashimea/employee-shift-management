@@ -1,14 +1,12 @@
-import ShiftAssignment from '../../model/shiftAssignment'
-import ShiftDetails from '../../model/shiftDetails'
-import ShiftMaster from '../../model/shiftMaster'
-import User from '../../model/user'
+import ShiftAssignment from '../../model/shiftAssignment';
 
 export default async (req, res) => {
   try {
     const response = await ShiftAssignment.findAll({
-      include: [{ model: ShiftMaster, include: [{ model: ShiftDetails }] }, { model: User }]
-    })
-    return res.status(200).json({ success: false, data: response })
-
-  } catch (e) { }
-}
+      include: ["shiftDetails", "userDetails"]
+    });
+    return res.status(200).json({ success: true, data: response });
+  } catch (e) {
+    return res.status(500).json({ success: false, data: e.message });
+  }
+};
