@@ -8,7 +8,7 @@ export default async (req, res) => {
     const email = await User.findOne({
       where: { email: payload.email },
     })
-    if (email) return res.status(422).json({ success: false, message: "Email already exist" })
+    if (email && email.id !== payload.id) return res.status(422).json({ success: false, message: "Email already exist" })
 
     // Check if Id and update the user
     if (payload.id) {
@@ -20,7 +20,7 @@ export default async (req, res) => {
 
     // Create User
     await User.create(payload)
-    return res.status(200).json({ success: false, message: "User Created Successfully" })
+    return res.status(200).json({ success: true, message: "User Created Successfully" })
 
 
   } catch (e) {

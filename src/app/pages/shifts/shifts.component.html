@@ -1,0 +1,45 @@
+<div class="app-header">
+  <div class="app-header-head">
+    <h1>Shifts</h1>
+    <button mat-raised-button color="primary" (click)="openEditor('create')">
+      Add Shift
+    </button>
+  </div>
+  <p>
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus nihil, at,
+    distinctio rem veniam modi delectus harum excepturi cumque illum mollitia
+    esse facilis architecto! Quas, rerum ad? Alr sit amet consectetur,
+    adipisicing elit. Minus nihil, at, distinctio rem veniam modi delectus harum
+    excepturi cumque illum mollitia esse facilis architecto! Quas, rerumiquid,
+    ipsam. Porro?
+  </p>
+</div>
+<div class="app-body">
+  <table class="app-table">
+    <thead>
+      <tr>
+        <th *ngFor="let header of displayedColumns">
+          {{ header }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of dataSource; let i = index">
+        <td style="width: 50px">{{ i + 1 }}</td>
+        <td style="width: 100px">{{ data.code }}</td>
+        <td>{{ data.name }}</td>
+        <td>
+          <div class="flex items-center" *ngFor="let day of data.shiftDetails">
+            <div class="avatar avatar-md">{{ day.dayName.slice(0, 1) }}</div>
+          </div>
+        </td>
+        <td class="table-action">
+          <div class="flex items-center">
+            <a (click)="openEditor(data)"><i class="far fa-edit"></i></a>
+            <a><i class="far fa-trash-alt"></i></a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

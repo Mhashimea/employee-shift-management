@@ -1,0 +1,36 @@
+.toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #673ab7;
+  color: white;
+  z-index: 1001;
+  padding: 0px 25px;
+  &-menus {
+    flex: 1;
+    text-align: center;
+    a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 15px;
+      padding: 2px 10px;
+      border-radius: 10px;
+    }
+  }
+}
+
+.toolbar-menus :hover,
+.router-active {
+  background-color: #fff;
+  color: #673ab7 !important;
+}
+
+.app-body {
+  position: relative;
+  top: 45px;
+  padding: 15px 25px;
+}

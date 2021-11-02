@@ -1,1 +1,126 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+table {
+  width: 100%;
+}
+
+// Common
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  img {
+    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.table-avatar {
+  padding: 6px ​ !important;
+  height: inherit;
+  .avatar {
+    margin-right: 10px;
+  }
+}
+
+.app-header {
+  margin: 15px 0px;
+  &-head {
+    display: flex;
+    align-items: center;
+    h1 {
+      margin: 0;
+      flex: 1;
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+  p {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+    max-width: 90%;
+  }
+}
+
+.desc {
+  font-size: 13px;
+  color: #666;
+}
+
+.employee-form {
+  width: 400px;
+}
+
+// Table Style
+.app-table {
+  background-color: #fff;
+  border-collapse: collapse;
+  td,
+  th {
+    border: 0.5px solid #eee;
+    padding: 8px;
+  }
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #f3f4f6;
+    font-weight: 500;
+  }
+  .avatar {
+    margin-right: 10px;
+  }
+  .table-action {
+    width: 50px;
+    a {
+      margin-right: 10px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+  }
+}
+
+.app-table tr:hover {
+  background-color: #f3f4f6;
+}
+
+//  Form
+.app-form {
+  &-control {
+    .mat-form-field {
+      width: 100%;
+    }
+  }
+  .form-footer {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    button.mat-warn {
+      margin-right: 5px;
+    }
+  }
+}

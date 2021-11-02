@@ -1,0 +1,50 @@
+<div class="app-header">
+  <div class="app-header-head">
+    <h1>Employees</h1>
+    <button mat-raised-button color="primary" (click)="openDialog()">
+      Add Employee
+    </button>
+  </div>
+  <p>
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus nihil, at,
+    distinctio rem veniam modi delectus harum excepturi cumque illum mollitia
+    esse facilis architecto! Quas, rerum ad? Alr sit amet consectetur,
+    adipisicing elit. Minus nihil, at, distinctio rem veniam modi delectus harum
+    excepturi cumque illum mollitia esse facilis architecto! Quas, rerumiquid,
+    ipsam. Porro?
+  </p>
+</div>
+<div class="app-body">
+  <table class="app-table">
+    <thead>
+      <tr>
+        <th *ngFor="let header of displayedColumns">
+          {{ header }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of dataSource; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td class="flex items-center">
+          <div class="avatar">{{ data.fullName.slice(0, 1) }}</div>
+          <span>{{ data.fullName }}</span>
+        </td>
+        <td>{{ data.email }}</td>
+        <td>{{ data.phone }}</td>
+        <td>{{ data.dateOfJoin | dateFormat: "DD-MMM-YYYY" }}</td>
+        <td>
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="primary" selected> Office Shift </mat-chip>
+          </mat-chip-list>
+        </td>
+        <td class="table-action">
+          <div class="flex items-center">
+            <a (click)="onEditEmployee(data)"><i class="far fa-edit"></i></a>
+            <a><i class="far fa-trash-alt"></i></a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'restuarant-app';
+  pathName = window.location.pathname
 }

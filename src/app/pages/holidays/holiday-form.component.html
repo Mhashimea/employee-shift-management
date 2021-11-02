@@ -1,0 +1,123 @@
+<div class="employee-form">
+  <h1 mat-dialog-title>Add Holiday</h1>
+  <div mat-dialog-content>
+    <p class="desc">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero inventore
+      possimus culpa quidem expedita ur enim, odio eos repudiandae voluptates
+      saepe quisquam.
+    </p>
+    <form
+      [formGroup]="formGroup"
+      (ngSubmit)="onSubmit(formGroup.value)"
+      class="app-form"
+    >
+      <div class="app-form-control">
+        <mat-form-field appearance="outline">
+          <mat-label>Code</mat-label>
+          <input matInput placeholder="Hoilday code" formControlName="code" />
+          <mat-error
+            *ngIf="
+              !formGroup.controls['code'].valid &&
+              formGroup.controls['code'].touched
+            "
+          >
+            Code is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="app-form-control">
+        <mat-form-field appearance="outline">
+          <mat-label>Holiday Name</mat-label>
+          <input matInput placeholder="Holiday name" formControlName="name" />
+          <mat-error
+            *ngIf="
+              !formGroup.controls['name'].valid &&
+              formGroup.controls['name'].touched
+            "
+          >
+            Name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="app-form-control">
+        <mat-form-field appearance="outline">
+          <mat-label>Start Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            matInput
+            placeholder="Select Start Date"
+            formControlName="startDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error
+            *ngIf="
+              !formGroup.controls['startDate'].valid &&
+              formGroup.controls['startDate'].touched
+            "
+          >
+            Start Date is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="app-form-control">
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            [matDatepicker]="picker2"
+            matInput
+            placeholder="Select End Date"
+            formControlName="endDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+
+          <mat-datepicker #picker2></mat-datepicker>
+          <mat-error
+            *ngIf="
+              !formGroup.controls['endDate'].valid &&
+              formGroup.controls['endDate'].touched
+            "
+          >
+            End Date is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="app-form-control">
+        <mat-checkbox formControlName="active" color="primary"
+          >Active</mat-checkbox
+        >
+      </div>
+
+      <div class="form-footer">
+        <button
+          mat-raised-button
+          color="warn"
+          [mat-dialog-close]="'cancel'"
+          mat-button
+          class="button"
+        >
+          Cancel
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="button"
+          [disabled]="!formGroup.valid || loading"
+        >
+          Submit Form
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

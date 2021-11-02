@@ -13,7 +13,7 @@ export default async (req, res) => {
     }
 
     await Holiday.create(payload)
-    return res.status(200).json({ success: false, message: "Holiday Created Successfully" })
+    return res.status(200).json({ success: true, message: "Holiday Created Successfully" })
 
-  } catch (e) { }
+  } catch (e) { res.status(500).json({ success: false, message: e.message }) }
 }

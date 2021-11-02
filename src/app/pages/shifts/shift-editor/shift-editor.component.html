@@ -1,0 +1,98 @@
+<div class="app-header">
+  <div class="app-header-head">
+    <h1>Add / Edit Shift</h1>
+  </div>
+  <p>
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus nihil, at,
+    distinctio rem veniam modi delectus harum excepturi cumque illum mollitia
+    esse facilis architecto! Quas, rerum ad? Alr sit amet consectetur,
+    adipisicing elit. Minus nihil, at, distinctio rem veniam modi delectus harum
+    excepturi cumque illum mollitia esse facilis architecto! Quas, rerumiquid,
+    ipsam. Porro?
+  </p>
+</div>
+<div class="app-body">
+  <form
+    [formGroup]="formGroup"
+    (ngSubmit)="onSubmit(formGroup.value)"
+    class="app-form shift-editor"
+  >
+    <div class="flex items-center">
+      <div class="app-form-control">
+        <mat-form-field appearance="outline">
+          <mat-label>Code</mat-label>
+          <input matInput placeholder="Shift code" formControlName="code" />
+          <mat-error
+            *ngIf="
+              !formGroup.controls['code'].valid &&
+              formGroup.controls['code'].touched
+            "
+          >
+            Code is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="app-form-control" style="margin-left: 10px; width: 400px">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Shift Name" formControlName="name" />
+          <mat-error
+            *ngIf="
+              !formGroup.controls['name'].valid &&
+              formGroup.controls['name'].touched
+            "
+          >
+            Name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="app-form-control">
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          placeholder="Shift Description"
+          formControlName="description"
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <div class="shift-editor-details">
+      <h1>Shift Details</h1>
+      <p class="desc">
+        Lorem ipsum, dolor sit ai exercitationem. Dignissimos est incidunt ipsum
+        ut perspiciatis dolore?
+      </p>
+      <div class="shift-editor-days">
+        <div
+          class="shift-editor-days-day"
+          *ngFor="let day of data.shiftDetails; let i = index"
+        >
+          <h2>{{ day.dayName }}</h2>
+          <mat-form-field>
+            <mat-label>StartTime</mat-label>
+            <input
+              formControlName="startTime"
+              placeholder="Start time"
+              matInput
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="form-footer">
+      <button mat-raised-button color="warn" mat-button class="button">
+        Cancel
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="button"
+        [disabled]="!formGroup.valid"
+      >
+        Submit Form
+      </button>
+    </div>
+  </form>
+</div>

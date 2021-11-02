@@ -10,7 +10,7 @@ export default async (req, res) => {
     }
 
     await ShiftAssignment.create(payload)
-    return res.status(200).json({ success: false, message: "Shift Assignment Created Successfully" })
+    return res.status(200).json({ success: true, message: "Shift Assignment Created Successfully" })
 
-  } catch (e) { }
+  } catch (e) { res.status(500).json({ success: false, message: e.message }) }
 }

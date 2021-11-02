@@ -23,7 +23,7 @@ export default async (req, res) => {
       })
     }
 
-    return res.status(200).json({ success: false, message: "Shift Created Successfully" })
+    return res.status(200).json({ success: true, message: "Shift Created Successfully" })
 
 
   } catch (e) {

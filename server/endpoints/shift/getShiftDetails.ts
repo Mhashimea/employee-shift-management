@@ -5,7 +5,7 @@ export default async (req, res) => {
     const response = await ShiftMaster.findAll({
       include: ['shiftDetails']
     })
-    return res.status(200).json({ success: false, data: response })
+    return res.status(200).json({ success: true, data: response })
 
   } catch (e) { }
 }

@@ -1,0 +1,46 @@
+<div class="app-header">
+  <div class="app-header-head">
+    <h1>Holidays</h1>
+    <button mat-raised-button color="primary" (click)="openDialog()">
+      Add Holiday
+    </button>
+  </div>
+  <p>
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus nihil, at,
+    distinctio rem veniam modi delectus harum excepturi cumque illum mollitia
+    esse facilis architecto! Quas, rerum ad? Alr sit amet consectetur,
+    adipisicing elit. Minus nihil, at, distinctio rem veniam modi delectus harum
+    excepturi cumque illum mollitia esse facilis architecto! Quas, rerumiquid,
+    ipsam. Porro?
+  </p>
+</div>
+<div class="app-body">
+  <table class="app-table">
+    <thead>
+      <tr>
+        <th *ngFor="let header of displayedColumns">
+          {{ header }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of dataSource; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td class="flex items-center">
+          <div class="avatar">{{ data.name.slice(0, 1) }}</div>
+          <span>{{ data.name }}</span>
+        </td>
+        <td>{{ data.code }}</td>
+        <td>{{ data.startDate | dateFormat: "DD-MMM-YYYY" }}</td>
+        <td>{{ data.endDate | dateFormat: "DD-MMM-YYYY" }}</td>
+        <td>{{ data.active ? "Active" : "Inactive" }}</td>
+        <td class="table-action">
+          <div class="flex items-center">
+            <a (click)="onEditEmployee(data)"><i class="far fa-edit"></i></a>
+            <a><i class="far fa-trash-alt"></i></a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
