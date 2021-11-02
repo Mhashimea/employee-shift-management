@@ -1,21 +1,15 @@
 <div class="toolbar" role="banner">
   <span>Welcome</span>
   <div class="toolbar-menus">
-    <a [routerLink]="['/']" [ngClass]="{ 'router-active': pathName === '/' }">
+    <a [routerLink]="['/']">
       <i class="fas fa-user-plus"></i>
       Employees
     </a>
-    <a
-      [routerLink]="['/shifts']"
-      [ngClass]="{ 'router-active': pathName === '/shifts' }"
-    >
+    <a [routerLink]="['/shifts']">
       <i class="fas fa-calendar-check"></i>
       Shifts
     </a>
-    <a
-      [routerLink]="['/holidays']"
-      [ngClass]="{ 'router-active': pathName === '/holidays' }"
-    >
+    <a [routerLink]="['/holidays']">
       <i class="fas fa-umbrella-beach"></i> Holidays
     </a>
     <a [routerLink]="['/shift-assignment']">

@@ -1,1 +1,98 @@
-<p>calendar works!</p>
+<div class="app-header">
+  <div class="app-header-head">
+    <h1>Shift Assignment Details</h1>
+  </div>
+  <p>
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus nihil, at,
+    distinctio rem veniam modi delectus harum excepturi cumque illum mollitia
+    esse facilis architecto! Quas, rerum ad? Alr sit amet consectetur,
+    adipisicing elit. Minus nihil, at, distinctio rem veniam modi delectus harum
+    excepturi cumque illum mollitia esse facilis architecto! Quas, rerumiquid,
+    ipsam. Porro?
+  </p>
+</div>
+
+<div class="app-body">
+  <div
+    class="row text-center calendar-details-header"
+    *ngIf="events.length > 0"
+  >
+    <div class="flex items-center">
+      <div style="flex: 1">
+        <h3>{{ viewDate | calendarDate: view + "ViewTitle":"en" }}</h3>
+        <div class="btn-group">
+          <div
+            class="btn btn-primary"
+            mwlCalendarPreviousView
+            view="month"
+            [(viewDate)]="viewDate"
+            (viewDateChange)="closeOpenMonthViewDay()"
+            mat-raised-button
+            color="primary"
+          >
+            Previous
+          </div>
+          <div
+            class="btn btn-outline-secondary"
+            mwlCalendarToday
+            [(viewDate)]="viewDate"
+          >
+            Today
+          </div>
+          <div
+            class="btn btn-primary"
+            mwlCalendarNextView
+            view="month"
+            [(viewDate)]="viewDate"
+            (viewDateChange)="closeOpenMonthViewDay()"
+          >
+            Next
+          </div>
+        </div>
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Select Employee</mat-label>
+        <mat-select
+          [(value)]="employeeId"
+          (selectionChange)="onChangeEmployee($event.value)"
+        >
+          <mat-option *ngFor="let emp of employees" [value]="emp.id">
+            {{ emp.fullName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <ng-template #customCellTemplate let-day="day" let-locale="locale">
+    <small style="margin: 5px">{{ day.date | dateFormat: "DD" }}</small>
+    <div *ngFor="let item of day.events">
+      <div class="calendar-shift" *ngIf="item.type === 'SHIFT'">
+        <h1>{{ item.employeeDetails }}</h1>
+        <p>{{ item.title }}</p>
+      </div>
+      <div class="calendar-holiday" *ngIf="item.type === 'HOLIDAY'">
+        <h2>Holiday</h2>
+      </div>
+    </div>
+  </ng-template>
+
+  <div [ngSwitch]="view" *ngIf="events.length > 0">
+    <mwl-calendar-month-view
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      [cellTemplate]="customCellTemplate"
+    >
+    </mwl-calendar-month-view>
+  </div>
+
+  <div class="table-no-data" *ngIf="events.length === 0">
+    <img src="../../../assets/no-data.png" alt="" />
+    <h1>No Data Found</h1>
+    <p class="desc">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam doloribus
+      nobis voluptas repellendus,
+    </p>
+  </div>
+</div>

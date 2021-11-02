@@ -30,7 +30,6 @@ export class EmployeeComponent implements OnInit {
     'Email',
     'Phone',
     'Date Of Join',
-    'Assigned Shift',
     'Actions',
   ];
   dataSource: EmployeeI[] = [];

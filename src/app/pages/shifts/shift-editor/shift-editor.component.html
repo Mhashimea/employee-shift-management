@@ -158,7 +158,13 @@
       </mat-form-field>
     </div>
     <div class="form-footer">
-      <button mat-raised-button color="warn" mat-button class="button">
+      <button
+        mat-raised-button
+        (click)="cancelAction()"
+        color="warn"
+        mat-button
+        class="button"
+      >
         Cancel
       </button>
       <button

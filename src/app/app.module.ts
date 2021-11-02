@@ -22,6 +22,8 @@ import { ShiftAssignmentComponent, ShiftAssignmentForm } from './pages/shift-ass
 import { ShiftEditorComponent } from './pages/shifts/shift-editor/shift-editor.component';
 import { ShiftsComponent } from './pages/shifts/shifts.component';
 import { MomentPipe } from './pipes/MomemtPipe';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,10 @@ import { MomentPipe } from './pipes/MomemtPipe';
     MatNativeDateModule,
     MatSnackBarModule,
     MatSelectModule,
-
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent, MatDatepickerToggle],

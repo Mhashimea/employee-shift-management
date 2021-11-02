@@ -7,7 +7,7 @@ export default async (req, res) => {
     // Check if Id and update the shift
     if (payload.id) {
       await ShiftMaster.update(payload, { where: { id: payload.id } })
-      return res.status(200).json({ success: false, message: "Shift Updated Successfully" })
+      return res.status(200).json({ success: true, message: "Shift Updated Successfully" })
     }
 
     await ShiftMaster.create(payload)

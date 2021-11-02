@@ -14,16 +14,23 @@
       <div class="app-form-control">
         <mat-form-field appearance="outline">
           <mat-label>Start Date</mat-label>
-          <input
-            matInput
-            [matDatepickerFilter]="myFilter"
-            [matDatepicker]="picker"
-          />
+          <mat-date-range-input [rangePicker]="picker">
+            <input
+              matStartDate
+              placeholder="Start date"
+              formControlName="startDate"
+            />
+            <input
+              matEndDate
+              placeholder="End date"
+              formControlName="endDate"
+            />
+          </mat-date-range-input>
           <mat-datepicker-toggle
             matSuffix
             [for]="picker"
           ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-date-range-picker #picker></mat-date-range-picker>
           <mat-error
             *ngIf="
               !formGroup.controls['startDate'].valid &&
